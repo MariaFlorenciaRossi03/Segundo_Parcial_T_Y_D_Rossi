@@ -157,7 +157,7 @@ namespace Ejercicio1_Serializacion
 }
 ```
 
-### **Form1.Designer.cs - Controles**
+### **Form1.Designer.cs - Controles MEJORADO**
 ```csharp
 private void InitializeComponent()
 {
@@ -168,23 +168,51 @@ private void InitializeComponent()
     this.btnSerializar = new Button();
     this.btnDeserializar = new Button();
     this.lblEstado = new Label();
+    this.lblTitulo = new Label();
+    this.lblNombre = new Label();
+    this.lblApellido = new Label();
+    this.lblEdad = new Label();
 
-    // txtNombre
-    this.txtNombre.Location = new System.Drawing.Point(120, 30);
+    // 🎨 TÍTULO PRINCIPAL
+    this.lblTitulo.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold);
+    this.lblTitulo.Location = new System.Drawing.Point(30, 10);
+    this.lblTitulo.Size = new System.Drawing.Size(400, 25);
+    this.lblTitulo.Text = "📄 EJERCICIO 1: Serialización de Objetos";
+    this.lblTitulo.ForeColor = System.Drawing.Color.DarkBlue;
+
+    // 🏷️ LABELS DESCRIPTIVOS
+    this.lblNombre.Location = new System.Drawing.Point(30, 53);
+    this.lblNombre.Size = new System.Drawing.Size(80, 23);
+    this.lblNombre.Text = "Nombre:";
+    this.lblNombre.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold);
+
+    this.lblApellido.Location = new System.Drawing.Point(30, 93);
+    this.lblApellido.Size = new System.Drawing.Size(80, 23);
+    this.lblApellido.Text = "Apellido:";
+    this.lblApellido.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold);
+
+    this.lblEdad.Location = new System.Drawing.Point(30, 133);
+    this.lblEdad.Size = new System.Drawing.Size(80, 23);
+    this.lblEdad.Text = "Edad:";
+    this.lblEdad.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold);
+
+    // 📝 CAMPOS DE ENTRADA
+    this.txtNombre.Location = new System.Drawing.Point(120, 50);
     this.txtNombre.Size = new System.Drawing.Size(200, 23);
     this.txtNombre.Text = "Florencia";
+    this.txtNombre.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
 
-    // txtApellido
-    this.txtApellido.Location = new System.Drawing.Point(120, 70);
+    this.txtApellido.Location = new System.Drawing.Point(120, 90);
     this.txtApellido.Size = new System.Drawing.Size(200, 23);
     this.txtApellido.Text = "Rossi";
+    this.txtApellido.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
 
-    // nudEdad
-    this.nudEdad.Location = new System.Drawing.Point(120, 110);
+    this.nudEdad.Location = new System.Drawing.Point(120, 130);
     this.nudEdad.Size = new System.Drawing.Size(100, 23);
     this.nudEdad.Value = 22;
     this.nudEdad.Minimum = 1;
     this.nudEdad.Maximum = 120;
+    this.nudEdad.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
 
     // btnCrearObjeto
     this.btnCrearObjeto.Location = new System.Drawing.Point(30, 160);

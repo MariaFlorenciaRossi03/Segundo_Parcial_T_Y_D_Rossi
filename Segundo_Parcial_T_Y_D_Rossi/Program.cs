@@ -16,7 +16,7 @@ namespace Segundo_Parcial_T_Y_D_Rossi
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            Application.Run(new Ejercicio_2());
         }
     }
 }

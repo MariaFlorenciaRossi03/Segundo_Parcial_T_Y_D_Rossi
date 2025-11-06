@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Forms.VisualStyles;
 using System.Xml;
 
 
@@ -89,6 +90,11 @@ namespace Ejercicio_2
             {
                 MessageBox.Show($"Error: {ex.Message}");
             }
+        }
+
+        private void btmsalir_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

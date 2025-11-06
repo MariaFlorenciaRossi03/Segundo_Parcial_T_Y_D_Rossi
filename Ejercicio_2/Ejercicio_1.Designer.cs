@@ -39,17 +39,20 @@
             this.lblEstado = new System.Windows.Forms.Label();
             this.btnSerializar = new System.Windows.Forms.Button();
             this.btnDeserializar = new System.Windows.Forms.Button();
+            this.label5 = new System.Windows.Forms.Label();
+            this.btmsalir = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.nudEdad)).BeginInit();
             this.SuspendLayout();
             // 
             // btm_Crear_Objeto
             // 
+            this.btm_Crear_Objeto.BackColor = System.Drawing.Color.Pink;
             this.btm_Crear_Objeto.Location = new System.Drawing.Point(282, 93);
             this.btm_Crear_Objeto.Name = "btm_Crear_Objeto";
             this.btm_Crear_Objeto.Size = new System.Drawing.Size(75, 23);
             this.btm_Crear_Objeto.TabIndex = 0;
             this.btm_Crear_Objeto.Text = "Crear Objeto";
-            this.btm_Crear_Objeto.UseVisualStyleBackColor = true;
+            this.btm_Crear_Objeto.UseVisualStyleBackColor = false;
             this.btm_Crear_Objeto.Click += new System.EventHandler(this.btm_Crear_Objeto_Click);
             // 
             // txtNombre
@@ -114,35 +117,62 @@
             this.lblEstado.AutoSize = true;
             this.lblEstado.Location = new System.Drawing.Point(126, 218);
             this.lblEstado.Name = "lblEstado";
-            this.lblEstado.Size = new System.Drawing.Size(35, 13);
+            this.lblEstado.Size = new System.Drawing.Size(111, 13);
             this.lblEstado.TabIndex = 8;
-            this.lblEstado.Text = "label5";
+            this.lblEstado.Text = "Listo para comenzar...";
             // 
             // btnSerializar
             // 
+            this.btnSerializar.BackColor = System.Drawing.Color.Pink;
             this.btnSerializar.Location = new System.Drawing.Point(282, 128);
             this.btnSerializar.Name = "btnSerializar";
             this.btnSerializar.Size = new System.Drawing.Size(75, 23);
             this.btnSerializar.TabIndex = 9;
             this.btnSerializar.Text = "Serializar";
-            this.btnSerializar.UseVisualStyleBackColor = true;
+            this.btnSerializar.UseVisualStyleBackColor = false;
             this.btnSerializar.Click += new System.EventHandler(this.btnSerializar_Click);
             // 
             // btnDeserializar
             // 
+            this.btnDeserializar.BackColor = System.Drawing.Color.Pink;
             this.btnDeserializar.Location = new System.Drawing.Point(282, 165);
             this.btnDeserializar.Name = "btnDeserializar";
             this.btnDeserializar.Size = new System.Drawing.Size(75, 23);
             this.btnDeserializar.TabIndex = 10;
             this.btnDeserializar.Text = "Deserializar";
-            this.btnDeserializar.UseVisualStyleBackColor = true;
+            this.btnDeserializar.UseVisualStyleBackColor = false;
             this.btnDeserializar.Click += new System.EventHandler(this.btnDeserializar_Click);
             // 
-            // Form1
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.ForeColor = System.Drawing.Color.DeepPink;
+            this.label5.Location = new System.Drawing.Point(35, 34);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(173, 37);
+            this.label5.TabIndex = 11;
+            this.label5.Text = "Ejercicio 1";
+            // 
+            // btmsalir
+            // 
+            this.btmsalir.BackColor = System.Drawing.Color.Pink;
+            this.btmsalir.Location = new System.Drawing.Point(381, 218);
+            this.btmsalir.Name = "btmsalir";
+            this.btmsalir.Size = new System.Drawing.Size(75, 23);
+            this.btmsalir.TabIndex = 12;
+            this.btmsalir.Text = "Salir";
+            this.btmsalir.UseVisualStyleBackColor = false;
+            this.btmsalir.Click += new System.EventHandler(this.btmsalir_Click);
+            // 
+            // Ejercicio_1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.BackColor = System.Drawing.Color.OldLace;
+            this.ClientSize = new System.Drawing.Size(471, 284);
+            this.Controls.Add(this.btmsalir);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.btnDeserializar);
             this.Controls.Add(this.btnSerializar);
             this.Controls.Add(this.lblEstado);
@@ -154,8 +184,8 @@
             this.Controls.Add(this.txtApellido);
             this.Controls.Add(this.txtNombre);
             this.Controls.Add(this.btm_Crear_Objeto);
-            this.Name = "Form1";
-            this.Text = "Form1";
+            this.Name = "Ejercicio_1";
+            this.Text = "Ejercicio 1";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.nudEdad)).EndInit();
             this.ResumeLayout(false);
@@ -176,6 +206,8 @@
         private System.Windows.Forms.Label lblEstado;
         private System.Windows.Forms.Button btnSerializar;
         private System.Windows.Forms.Button btnDeserializar;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Button btmsalir;
     }
 }
 
