@@ -39,8 +39,8 @@
             this.lblEstado = new System.Windows.Forms.Label();
             this.btnSerializar = new System.Windows.Forms.Button();
             this.btnDeserializar = new System.Windows.Forms.Button();
-            this.label5 = new System.Windows.Forms.Label();
             this.btmsalir = new System.Windows.Forms.Button();
+            this.label5 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.nudEdad)).BeginInit();
             this.SuspendLayout();
             // 
@@ -143,17 +143,6 @@
             this.btnDeserializar.UseVisualStyleBackColor = false;
             this.btnDeserializar.Click += new System.EventHandler(this.btnDeserializar_Click);
             // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.ForeColor = System.Drawing.Color.DeepPink;
-            this.label5.Location = new System.Drawing.Point(35, 34);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(173, 37);
-            this.label5.TabIndex = 11;
-            this.label5.Text = "Ejercicio 1";
-            // 
             // btmsalir
             // 
             this.btmsalir.BackColor = System.Drawing.Color.Pink;
@@ -165,14 +154,26 @@
             this.btmsalir.UseVisualStyleBackColor = false;
             this.btmsalir.Click += new System.EventHandler(this.btmsalir_Click);
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Zilla Slab", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.ForeColor = System.Drawing.Color.PaleVioletRed;
+            this.label5.Location = new System.Drawing.Point(19, 30);
+            this.label5.Margin = new System.Windows.Forms.Padding(10, 0, 10, 0);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(159, 38);
+            this.label5.TabIndex = 72;
+            this.label5.Text = "Ejercicio 1";
+            // 
             // Ejercicio_1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.OldLace;
             this.ClientSize = new System.Drawing.Size(471, 284);
-            this.Controls.Add(this.btmsalir);
             this.Controls.Add(this.label5);
+            this.Controls.Add(this.btmsalir);
             this.Controls.Add(this.btnDeserializar);
             this.Controls.Add(this.btnSerializar);
             this.Controls.Add(this.lblEstado);
@@ -206,8 +207,8 @@
         private System.Windows.Forms.Label lblEstado;
         private System.Windows.Forms.Button btnSerializar;
         private System.Windows.Forms.Button btnDeserializar;
-        private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button btmsalir;
+        private System.Windows.Forms.Label label5;
     }
 }
 
