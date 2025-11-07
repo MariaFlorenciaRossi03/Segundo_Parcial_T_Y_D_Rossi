@@ -325,19 +325,14 @@ namespace Ejercicio2_ClonacionProfunda
             };
         }
 
-        // ✅ CLONACIÓN PROFUNDA (crea nuevo objeto)
+        // ✅ CLONACIÓN PROFUNDA (recursión verdadera)
         public Persona ClonarProfundo()
         {
             return new Persona
             {
                 Nombre = this.Nombre,
                 Apellido = this.Apellido,
-                Jefe = this.Jefe == null ? null : new Persona
-                {
-                    Nombre = this.Jefe.Nombre,
-                    Apellido = this.Jefe.Apellido,
-                    Jefe = this.Jefe.Jefe // Recursivo si es necesario
-                }
+                Jefe = this.Jefe?.ClonarProfundo()  // 🔄 RECURSIÓN VERDADERA
             };
         }
 
@@ -368,39 +363,90 @@ namespace Ejercicio2_ClonacionProfunda
             InitializeComponent();
         }
 
-        // 🔹 CREAR ESCENARIO DE PRUEBA
+        // 🔹 CREAR ESCENARIO BÁSICO (2 NIVELES)
         private void btnCrearEscenario_Click(object sender, EventArgs e)
         {
-            // Crear jefe
-            jefe = new Persona
+            // Crear JEFE NICO
+            Persona nico = new Persona
             {
-                Nombre = "Carlos",
+                Nombre = "Nico",
                 Apellido = "Rodriguez",
-                Jefe = null
+                Jefe = null  // Sin jefe para simplicidad
             };
 
-            // Crear empleados que COMPARTEN el mismo jefe
+            // Crear EMPLEADOS que comparten el mismo jefe
             empleado1 = new Persona
             {
                 Nombre = "Ana",
-                Apellido = "Garcia",
-                Jefe = jefe  // ⚠️ Misma referencia
+                Apellido = "Garcia", 
+                Jefe = nico  // Su jefe es Nico
             };
 
             empleado2 = new Persona
             {
                 Nombre = "Luis",
                 Apellido = "Martinez",
-                Jefe = jefe  // ⚠️ Misma referencia
+                Jefe = nico  // Su jefe también es Nico
             };
 
-            txtResultados.Text = "🔧 ESCENARIO CREADO:\r\n";
-            txtResultados.Text += $"Empleado 1: {empleado1}\r\n";
-            txtResultados.Text += $"Empleado 2: {empleado2}\r\n";
-            txtResultados.Text += "✅ Ambos comparten la misma referencia del jefe\r\n\r\n";
+            txtResultados.Text = "✅ ESCENARIO BÁSICO CREADO:\r\n";
+            txtResultados.Text += $"� Empleado 1: {empleado1}\r\n";
+            txtResultados.Text += $"👤 Empleado 2: {empleado2}\r\n";
+            txtResultados.Text += $"👨‍💼 Jefe: Nico → {nico.Nombre} {nico.Apellido}\r\n\r\n";
+            txtResultados.Text += "🎯 Jerarquía: Ana/Luis → Nico (2 niveles)\r\n";
+            txtResultados.Text += "▶️ Ahora puedes probar clonación superficial y profunda\r\n";
 
+            // Activar botones de clonación
             btnClonacionSuperficial.Enabled = true;
             btnClonacionProfunda.Enabled = true;
+            btnJerarquiaCompleta.Enabled = true;
+        }
+
+        // 🔹 DEMOSTRAR JERARQUÍA COMPLETA (3 NIVELES)
+        private void btnJerarquiaCompleta_Click(object sender, EventArgs e)
+        {
+            if (empleado1 == null || empleado2 == null)
+            {
+                txtResultados.Text = "❌ Primero debes crear el escenario básico\r\n";
+                return;
+            }
+
+            // Crear GERENTE GENERAL (nivel más alto)
+            Persona gerente = new Persona
+            {
+                Nombre = "Flor",
+                Apellido = "Rossi", 
+                Jefe = null  // Es la jefa suprema
+            };
+
+            // Crear SUPERVISOR (nivel medio)  
+            Persona supervisor = new Persona
+            {
+                Nombre = "Nico",
+                Apellido = "Rodriguez",
+                Jefe = gerente  // Su jefe es Flor
+            };
+
+            // Actualizar empleados para que tengan la jerarquía completa
+            empleado1.Jefe = supervisor;  // Ana → Nico
+            empleado2.Jefe = supervisor;  // Luis → Nico
+
+            txtResultados.Text = "🏢 JERARQUÍA COMPLETA DE 3 NIVELES:\r\n\r\n";
+            
+            txtResultados.Text += "👤 Empleado 1: Ana Garcia\r\n";
+            txtResultados.Text += $"   - Jefe: {empleado1.Jefe.Nombre} {empleado1.Jefe.Apellido}\r\n";
+            txtResultados.Text += $"   - Jefe del jefe: {empleado1.Jefe.Jefe.Nombre} {empleado1.Jefe.Jefe.Apellido}\r\n\r\n";
+            
+            txtResultados.Text += "👤 Empleado 2: Luis Martinez\r\n";
+            txtResultados.Text += $"   - Jefe: {empleado2.Jefe.Nombre} {empleado2.Jefe.Apellido}\r\n";
+            txtResultados.Text += $"   - Jefe del jefe: {empleado2.Jefe.Jefe.Nombre} {empleado2.Jefe.Jefe.Apellido}\r\n\r\n";
+            
+            txtResultados.Text += "🎯 JERARQUÍA COMPLETA:\r\n";
+            txtResultados.Text += "   Ana → Nico → Flor\r\n";
+            txtResultados.Text += "   Luis → Nico → Flor\r\n\r\n";
+            
+            txtResultados.Text += "✨ ¡Ahora puedes clonar y ver cómo la RECURSIÓN maneja 3 niveles!\r\n";
+            txtResultados.Text += "🔄 ClonarProfundo() clonará: Ana/Luis → Nico → Flor\r\n";
         }
 
         // 🔹 DEMOSTRACIÓN CLONACIÓN SUPERFICIAL
@@ -426,25 +472,29 @@ namespace Ejercicio2_ClonacionProfunda
             jefe.Nombre = "Carlos";
         }
 
-        // 🔹 DEMOSTRACIÓN CLONACIÓN PROFUNDA
+        // 🔹 DEMOSTRACIÓN CLONACIÓN PROFUNDA RECURSIVA
         private void btnClonacionProfunda_Click(object sender, EventArgs e)
         {
             if (empleado1 == null) return;
 
+            txtResultados.Text += "✅ CLONACIÓN PROFUNDA RECURSIVA:\r\n";
+            txtResultados.Text += $"Original: {empleado1}\r\n";
+            
+            // Crear clon con recursión verdadera
             Persona clonProfundo = empleado1.ClonarProfundo();
             
-            txtResultados.Text += "✅ CLONACIÓN PROFUNDA:\r\n";
-            txtResultados.Text += $"Original: {empleado1}\r\n";
             txtResultados.Text += $"Clon: {clonProfundo}\r\n";
+            txtResultados.Text += "🔄 Ambos objetos inicialmente iguales pero INDEPENDIENTES\r\n\r\n";
 
             // Cambiar nombre del jefe en el clon
-            clonProfundo.Jefe.Nombre = "CARLOS MODIFICADO";
+            clonProfundo.Jefe.Nombre = "NICOLAS MODIFICADO";
 
-            txtResultados.Text += "\r\n🔄 Después de cambiar el jefe del clon:\r\n";
+            txtResultados.Text += "🔄 Después de cambiar el jefe del clon:\r\n";
             txtResultados.Text += $"Original: {empleado1}\r\n";
             txtResultados.Text += $"Clon: {clonProfundo}\r\n";
-            txtResultados.Text += "✅ El original NO cambió (objetos independientes)\r\n\r\n";
-            txtResultados.Text += "🎯 DEMOSTRACIÓN COMPLETA: ¡La clonación profunda funciona!\r\n";
+            txtResultados.Text += "✅ El original mantiene 'Carlos' - ¡OBJETOS INDEPENDIENTES!\r\n";
+            txtResultados.Text += "🎯 RECURSIÓN: this.Jefe?.ClonarProfundo() crea nuevo objeto automáticamente\r\n\r\n";
+            txtResultados.Text += "� DEMOSTRACIÓN COMPLETA: ¡La recursión funciona perfectamente!\r\n";
         }
 
         private void btnLimpiar_Click(object sender, EventArgs e)
@@ -467,6 +517,7 @@ private void InitializeComponent()
     this.btnCrearEscenario = new Button();
     this.btnClonacionSuperficial = new Button();
     this.btnClonacionProfunda = new Button();
+    this.btnJerarquiaCompleta = new Button();
     this.btnLimpiar = new Button();
     this.txtResultados = new TextBox();
 
@@ -490,6 +541,13 @@ private void InitializeComponent()
     this.btnClonacionProfunda.Enabled = false;
     this.btnClonacionProfunda.Click += this.btnClonacionProfunda_Click;
 
+    // btnJerarquiaCompleta
+    this.btnJerarquiaCompleta.Location = new System.Drawing.Point(30, 75);
+    this.btnJerarquiaCompleta.Size = new System.Drawing.Size(180, 35);
+    this.btnJerarquiaCompleta.Text = "4. Jefe del Jefe";
+    this.btnJerarquiaCompleta.Enabled = false;
+    this.btnJerarquiaCompleta.Click += this.btnJerarquiaCompleta_Click;
+
     // btnLimpiar
     this.btnLimpiar.Location = new System.Drawing.Point(540, 30);
     this.btnLimpiar.Size = new System.Drawing.Size(100, 35);
@@ -497,19 +555,20 @@ private void InitializeComponent()
     this.btnLimpiar.Click += this.btnLimpiar_Click;
 
     // txtResultados
-    this.txtResultados.Location = new System.Drawing.Point(30, 85);
+    this.txtResultados.Location = new System.Drawing.Point(30, 125);
     this.txtResultados.Multiline = true;
     this.txtResultados.ScrollBars = ScrollBars.Vertical;
-    this.txtResultados.Size = new System.Drawing.Size(610, 350);
+    this.txtResultados.Size = new System.Drawing.Size(610, 310);
     this.txtResultados.Font = new System.Drawing.Font("Consolas", 9F);
     this.txtResultados.ReadOnly = true;
 
     // Form1
-    this.ClientSize = new System.Drawing.Size(674, 461);
-    this.Text = "Ejercicio 2 - Clonación Profunda";
+    this.ClientSize = new System.Drawing.Size(674, 500);  // ⬆️ Aumento altura para el nuevo botón
+    this.Text = "Ejercicio 2 - Clonación Profunda con Jerarquía";
     this.Controls.Add(this.btnCrearEscenario);
     this.Controls.Add(this.btnClonacionSuperficial);
     this.Controls.Add(this.btnClonacionProfunda);
+    this.Controls.Add(this.btnJerarquiaCompleta);
     this.Controls.Add(this.btnLimpiar);
     this.Controls.Add(this.txtResultados);
 }

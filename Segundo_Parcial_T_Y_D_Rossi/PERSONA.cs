@@ -11,7 +11,7 @@ namespace Segundo_Parcial_T_Y_D_Rossi
         public string Apellido { get; set; }
         public PERSONA Jefe { get; set; }
 
-        // CLONACIÓN SUPERFICIAL (copia la referencia)
+
         public PERSONA ClonarSuperficial()
         {
             return new PERSONA
@@ -22,19 +22,14 @@ namespace Segundo_Parcial_T_Y_D_Rossi
             };
         }
 
-        // CLONACIÓN PROFUNDA (crea nuevo objeto)
+     
         public PERSONA ClonarProfundo()
         {
             return new PERSONA
             {
                 Nombre = this.Nombre,
                 Apellido = this.Apellido,
-                Jefe = this.Jefe == null ? null : new PERSONA
-                {
-                    Nombre = this.Jefe.Nombre,
-                    Apellido = this.Jefe.Apellido,
-                    Jefe = this.Jefe.Jefe // Recursivo si es necesario
-                }
+                Jefe = this.Jefe?.ClonarProfundo()  // RECURSIÓN 
             };
         }
 

@@ -35,6 +35,7 @@
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
+            this.btmjefedeljefe = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnCrearEscenario
@@ -83,18 +84,18 @@
             // button1
             // 
             this.button1.BackColor = System.Drawing.Color.Plum;
-            this.button1.Location = new System.Drawing.Point(501, 234);
+            this.button1.Location = new System.Drawing.Point(501, 298);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(143, 23);
             this.button1.TabIndex = 4;
             this.button1.Text = "Limpiar";
             this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.button1.Click += new System.EventHandler(this.btnLimpiar_Click);  // 🆕 CONECTAR EVENTO
             // 
             // button2
             // 
             this.button2.BackColor = System.Drawing.Color.Plum;
-            this.button2.Location = new System.Drawing.Point(641, 310);
+            this.button2.Location = new System.Drawing.Point(673, 324);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(90, 23);
             this.button2.TabIndex = 13;
@@ -114,12 +115,24 @@
             this.label4.TabIndex = 71;
             this.label4.Text = "Ejercicio 2";
             // 
+            // btmjefedeljefe
+            // 
+            this.btmjefedeljefe.BackColor = System.Drawing.Color.Plum;
+            this.btmjefedeljefe.Location = new System.Drawing.Point(501, 236);
+            this.btmjefedeljefe.Name = "btmjefedeljefe";
+            this.btmjefedeljefe.Size = new System.Drawing.Size(143, 23);
+            this.btmjefedeljefe.TabIndex = 72;
+            this.btmjefedeljefe.Text = "Jefe Del Jefe";
+            this.btmjefedeljefe.UseVisualStyleBackColor = false;
+            this.btmjefedeljefe.Click += new System.EventHandler(this.btmjefedeljefe_Click);  // 🆕 CONECTAR EVENTO
+            // 
             // Ejercicio_2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.OldLace;
             this.ClientSize = new System.Drawing.Size(775, 373);
+            this.Controls.Add(this.btmjefedeljefe);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
@@ -144,6 +157,7 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Button btmjefedeljefe;
     }
 }
 

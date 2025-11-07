@@ -42,7 +42,7 @@ namespace Ejercicio_3
             }
             catch (OperationCanceledException)
             {
-                // Hilo cancelado correctamente
+               
             }
             finally
             {
@@ -78,7 +78,7 @@ namespace Ejercicio_3
             }
             catch (OperationCanceledException)
             {
-                // Hilo cancelado correctamente
+            
             }
             finally
             {
@@ -112,7 +112,7 @@ namespace Ejercicio_3
                     Invoke(new Action(() => txtPares.Text = contador.ToString()));
                 }
 
-                contador += 2; // Incrementar de 2 en 2 (0, 2, 4, 6...)
+                contador += 2; 
 
                 try
                 {
@@ -161,7 +161,7 @@ namespace Ejercicio_3
             txtImpares.Text = "1";
         }
 
-        // CLEANUP AL CERRAR
+     
         protected override void OnFormClosing(FormClosingEventArgs e)
         {
             tokenPares?.Cancel();
