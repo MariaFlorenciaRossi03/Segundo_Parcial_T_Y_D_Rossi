@@ -67,21 +67,39 @@ namespace Ejercicio_2
 
         private void btnDeserializar_Click(object sender, EventArgs e)
         {
-            if (!File.Exists(ARCHIVO_JSON))
-            {
-                MessageBox.Show("No existe archivo serializado");
-                return;
-            }
-
             try
             {
+                //  Memoria vacía
+                lblEstado.Text = $"Estado memoria: {(persona == null ? "❌ NULL" : "✅ Ocupada")}";
+
+                if (persona == null)
+                {
+                    lblEstado.Text += " - ¡Imposible leer de memoria!";
+                }
+
+              
+                if (!File.Exists(ARCHIVO_JSON))
+                {
+                    MessageBox.Show("❌ Sin archivo = Sin recuperación posible");
+                    return;
+                }
+
+                //Lectura de disco
+                lblEstado.Text += "\n📁 Leyendo desde archivo...";
                 string json = File.ReadAllText(ARCHIVO_JSON);
+
+                // Creación de nuevo objeto
                 PERSONA personaDeserializada = JsonConvert.DeserializeObject<PERSONA>(json);
 
-                lblEstado.Text = "🔄 Objeto deserializado desde archivo";
-                MessageBox.Show($"¡Objeto recuperado!\n\n{personaDeserializada}");
+                
+                MessageBox.Show($"--DEMOSTRACIÓN COMPLETA--:\n\n" +
+                               $"Memoria: {(persona == null ? "NULL (vacía)" : persona.ToString())}\n" +
+                               $"Archivo: {personaDeserializada}\n\n" +
+                               $"✅ ¡Los datos SOLO pueden venir del archivo!");
 
-                // Actualizar interfaz
+                lblEstado.Text = "🔄 Objeto deserializado desde archivo (memoria sigue NULL)";
+
+                // Actualizar interfaz con los datos del archivo
                 txtNombre.Text = personaDeserializada.Nombre;
                 txtApellido.Text = personaDeserializada.Apellido;
                 nudEdad.Value = personaDeserializada.Edad;
@@ -95,6 +113,13 @@ namespace Ejercicio_2
         private void btmsalir_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void btnBorrarMemoria_Click(object sender, EventArgs e)
+        {
+            persona = null;  // ELIMINE EL OBJETO DE MEMORIA
+            lblEstado.Text = " Objeto eliminado de memoria (persona = null)";
+            MessageBox.Show("¡Objeto eliminado de memoria!\nAhora prueba deserializar...");
         }
     }
 }

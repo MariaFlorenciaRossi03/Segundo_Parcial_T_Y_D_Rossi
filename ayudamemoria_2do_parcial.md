@@ -126,24 +126,42 @@ namespace Ejercicio1_Serializacion
             }
         }
 
-        // 🔹 BOTÓN 3: DESERIALIZAR (LEER)
+        // 🔹 BOTÓN 3: DESERIALIZAR (LEER) - VERSIÓN CON DEMOSTRACIÓN
         private void btnDeserializar_Click(object sender, EventArgs e)
         {
-            if (!File.Exists(ARCHIVO_JSON))
-            {
-                MessageBox.Show("No existe archivo serializado");
-                return;
-            }
-
             try
             {
+                // 🔍 EVIDENCIA 1: Memoria vacía
+                lblEstado.Text = $"Estado memoria: {(persona == null ? "❌ NULL" : "✅ Ocupada")}";
+                
+                if (persona == null)
+                {
+                    lblEstado.Text += " - ¡Imposible leer de memoria!";
+                }
+                
+                // 🔍 EVIDENCIA 2: Archivo existe
+                if (!File.Exists(ARCHIVO_JSON))
+                {
+                    MessageBox.Show("❌ Sin archivo = Sin recuperación posible");
+                    return;
+                }
+                
+                // 🔍 EVIDENCIA 3: Lectura de disco
+                lblEstado.Text += "\n📁 Leyendo desde archivo...";
                 string json = File.ReadAllText(ARCHIVO_JSON);
+                
+                // 🔍 EVIDENCIA 4: Creación de nuevo objeto
                 Persona personaDeserializada = JsonConvert.DeserializeObject<Persona>(json);
+                
+                // 🔍 EVIDENCIA 5: Resultado
+                MessageBox.Show($"🎯 DEMOSTRACIÓN COMPLETA:\n\n" +
+                               $"Memoria: {(persona == null ? "NULL (vacía)" : persona.ToString())}\n" +
+                               $"Archivo: {personaDeserializada}\n\n" +
+                               $"✅ ¡Los datos SOLO pueden venir del archivo!");
+                
+                lblEstado.Text = "🔄 Objeto deserializado desde archivo (memoria sigue NULL)";
 
-                lblEstado.Text = "🔄 Objeto deserializado desde archivo";
-                MessageBox.Show($"¡Objeto recuperado!\n\n{personaDeserializada}");
-
-                // Actualizar interfaz
+                // Actualizar interfaz con los datos del archivo
                 txtNombre.Text = personaDeserializada.Nombre;
                 txtApellido.Text = personaDeserializada.Apellido;
                 nudEdad.Value = personaDeserializada.Edad;
@@ -153,11 +171,19 @@ namespace Ejercicio1_Serializacion
                 MessageBox.Show($"Error: {ex.Message}");
             }
         }
+
+        // 🔹 BOTÓN ADICIONAL: BORRAR MEMORIA (para demostración)
+        private void btnBorrarMemoria_Click(object sender, EventArgs e)
+        {
+            persona = null;  // ¡ELIMINAMOS EL OBJETO DE MEMORIA!
+            lblEstado.Text = "🗑️ Objeto eliminado de memoria (persona = null)";
+            MessageBox.Show("¡Objeto eliminado de memoria!\nAhora prueba deserializar...");
+        }
     }
 }
 ```
 
-### **Form1.Designer.cs - Controles MEJORADO**
+### **Form1.Designer.cs - Controles MEJORADO CON DEMOSTRACIÓN**
 ```csharp
 private void InitializeComponent()
 {
@@ -167,6 +193,7 @@ private void InitializeComponent()
     this.btnCrearObjeto = new Button();
     this.btnSerializar = new Button();
     this.btnDeserializar = new Button();
+    this.btnBorrarMemoria = new Button();  // 🆕 BOTÓN NUEVO
     this.lblEstado = new Label();
     this.lblTitulo = new Label();
     this.lblNombre = new Label();
@@ -176,8 +203,8 @@ private void InitializeComponent()
     // 🎨 TÍTULO PRINCIPAL
     this.lblTitulo.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold);
     this.lblTitulo.Location = new System.Drawing.Point(30, 10);
-    this.lblTitulo.Size = new System.Drawing.Size(400, 25);
-    this.lblTitulo.Text = "📄 EJERCICIO 1: Serialización de Objetos";
+    this.lblTitulo.Size = new System.Drawing.Size(500, 25);
+    this.lblTitulo.Text = "📄 EJERCICIO 1: Serialización CON DEMOSTRACIÓN";
     this.lblTitulo.ForeColor = System.Drawing.Color.DarkBlue;
 
     // 🏷️ LABELS DESCRIPTIVOS
@@ -214,39 +241,52 @@ private void InitializeComponent()
     this.nudEdad.Maximum = 120;
     this.nudEdad.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
 
-    // btnCrearObjeto
+    // 🔹 BOTONES DE FUNCIONALIDAD
     this.btnCrearObjeto.Location = new System.Drawing.Point(30, 160);
-    this.btnCrearObjeto.Size = new System.Drawing.Size(120, 35);
-    this.btnCrearObjeto.Text = "1. Crear Objeto";
+    this.btnCrearObjeto.Size = new System.Drawing.Size(100, 35);
+    this.btnCrearObjeto.Text = "1. Crear";
     this.btnCrearObjeto.Click += this.btnCrearObjeto_Click;
 
-    // btnSerializar
-    this.btnSerializar.Location = new System.Drawing.Point(170, 160);
-    this.btnSerializar.Size = new System.Drawing.Size(120, 35);
+    this.btnSerializar.Location = new System.Drawing.Point(140, 160);
+    this.btnSerializar.Size = new System.Drawing.Size(100, 35);
     this.btnSerializar.Text = "2. Serializar";
     this.btnSerializar.Click += this.btnSerializar_Click;
 
-    // btnDeserializar
-    this.btnDeserializar.Location = new System.Drawing.Point(310, 160);
-    this.btnDeserializar.Size = new System.Drawing.Size(120, 35);
-    this.btnDeserializar.Text = "3. Deserializar";
+    // 🆕 BOTÓN BORRAR MEMORIA (para demostración)
+    this.btnBorrarMemoria.Location = new System.Drawing.Point(250, 160);
+    this.btnBorrarMemoria.Size = new System.Drawing.Size(100, 35);
+    this.btnBorrarMemoria.Text = "3. Borrar Mem";
+    this.btnBorrarMemoria.BackColor = System.Drawing.Color.Orange;
+    this.btnBorrarMemoria.Click += this.btnBorrarMemoria_Click;
+
+    this.btnDeserializar.Location = new System.Drawing.Point(360, 160);
+    this.btnDeserializar.Size = new System.Drawing.Size(100, 35);
+    this.btnDeserializar.Text = "4. Deserializar";
+    this.btnDeserializar.BackColor = System.Drawing.Color.LightGreen;
     this.btnDeserializar.Click += this.btnDeserializar_Click;
 
-    // lblEstado
+    // lblEstado (más grande para mostrar evidencia)
     this.lblEstado.Location = new System.Drawing.Point(30, 220);
-    this.lblEstado.Size = new System.Drawing.Size(400, 23);
-    this.lblEstado.Text = "Listo para comenzar...";
+    this.lblEstado.Size = new System.Drawing.Size(450, 60);
+    this.lblEstado.Text = "Listo para demostración...";
+    this.lblEstado.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+    this.lblEstado.BorderStyle = BorderStyle.FixedSingle;
 
-    // Form1
-    this.ClientSize = new System.Drawing.Size(464, 261);
-    this.Text = "Ejercicio 1 - Serialización";
+    // Form1 (más ancho para los botones)
+    this.ClientSize = new System.Drawing.Size(490, 300);
+    this.Text = "Ejercicio 1 - Serialización CON DEMOSTRACIÓN";
     this.Controls.Add(this.txtNombre);
     this.Controls.Add(this.txtApellido);
     this.Controls.Add(this.nudEdad);
     this.Controls.Add(this.btnCrearObjeto);
     this.Controls.Add(this.btnSerializar);
+    this.Controls.Add(this.btnBorrarMemoria);    // 🆕 AGREGAR BOTÓN
     this.Controls.Add(this.btnDeserializar);
     this.Controls.Add(this.lblEstado);
+    this.Controls.Add(this.lblTitulo);
+    this.Controls.Add(this.lblNombre);
+    this.Controls.Add(this.lblApellido);
+    this.Controls.Add(this.lblEdad);
 }
 ```
 

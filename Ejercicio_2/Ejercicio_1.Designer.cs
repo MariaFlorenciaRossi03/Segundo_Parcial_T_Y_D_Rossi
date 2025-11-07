@@ -41,15 +41,16 @@
             this.btnDeserializar = new System.Windows.Forms.Button();
             this.btmsalir = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
+            this.btnBorrarMemoria = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.nudEdad)).BeginInit();
             this.SuspendLayout();
             // 
             // btm_Crear_Objeto
             // 
             this.btm_Crear_Objeto.BackColor = System.Drawing.Color.Pink;
-            this.btm_Crear_Objeto.Location = new System.Drawing.Point(282, 93);
+            this.btm_Crear_Objeto.Location = new System.Drawing.Point(282, 88);
             this.btm_Crear_Objeto.Name = "btm_Crear_Objeto";
-            this.btm_Crear_Objeto.Size = new System.Drawing.Size(75, 23);
+            this.btm_Crear_Objeto.Size = new System.Drawing.Size(89, 23);
             this.btm_Crear_Objeto.TabIndex = 0;
             this.btm_Crear_Objeto.Text = "Crear Objeto";
             this.btm_Crear_Objeto.UseVisualStyleBackColor = false;
@@ -106,7 +107,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(52, 218);
+            this.label4.Location = new System.Drawing.Point(52, 228);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(40, 13);
             this.label4.TabIndex = 7;
@@ -115,7 +116,7 @@
             // lblEstado
             // 
             this.lblEstado.AutoSize = true;
-            this.lblEstado.Location = new System.Drawing.Point(126, 218);
+            this.lblEstado.Location = new System.Drawing.Point(126, 228);
             this.lblEstado.Name = "lblEstado";
             this.lblEstado.Size = new System.Drawing.Size(111, 13);
             this.lblEstado.TabIndex = 8;
@@ -124,9 +125,9 @@
             // btnSerializar
             // 
             this.btnSerializar.BackColor = System.Drawing.Color.Pink;
-            this.btnSerializar.Location = new System.Drawing.Point(282, 128);
+            this.btnSerializar.Location = new System.Drawing.Point(282, 117);
             this.btnSerializar.Name = "btnSerializar";
-            this.btnSerializar.Size = new System.Drawing.Size(75, 23);
+            this.btnSerializar.Size = new System.Drawing.Size(89, 23);
             this.btnSerializar.TabIndex = 9;
             this.btnSerializar.Text = "Serializar";
             this.btnSerializar.UseVisualStyleBackColor = false;
@@ -135,9 +136,9 @@
             // btnDeserializar
             // 
             this.btnDeserializar.BackColor = System.Drawing.Color.Pink;
-            this.btnDeserializar.Location = new System.Drawing.Point(282, 165);
+            this.btnDeserializar.Location = new System.Drawing.Point(282, 185);
             this.btnDeserializar.Name = "btnDeserializar";
-            this.btnDeserializar.Size = new System.Drawing.Size(75, 23);
+            this.btnDeserializar.Size = new System.Drawing.Size(89, 23);
             this.btnDeserializar.TabIndex = 10;
             this.btnDeserializar.Text = "Deserializar";
             this.btnDeserializar.UseVisualStyleBackColor = false;
@@ -146,7 +147,7 @@
             // btmsalir
             // 
             this.btmsalir.BackColor = System.Drawing.Color.Pink;
-            this.btmsalir.Location = new System.Drawing.Point(381, 218);
+            this.btmsalir.Location = new System.Drawing.Point(440, 237);
             this.btmsalir.Name = "btmsalir";
             this.btmsalir.Size = new System.Drawing.Size(75, 23);
             this.btmsalir.TabIndex = 12;
@@ -166,12 +167,24 @@
             this.label5.TabIndex = 72;
             this.label5.Text = "Ejercicio 1";
             // 
+            // btnBorrarMemoria
+            // 
+            this.btnBorrarMemoria.BackColor = System.Drawing.Color.Pink;
+            this.btnBorrarMemoria.Location = new System.Drawing.Point(282, 146);
+            this.btnBorrarMemoria.Name = "btnBorrarMemoria";
+            this.btnBorrarMemoria.Size = new System.Drawing.Size(89, 23);
+            this.btnBorrarMemoria.TabIndex = 73;
+            this.btnBorrarMemoria.Text = "Borrar Memoria";
+            this.btnBorrarMemoria.UseVisualStyleBackColor = false;
+            this.btnBorrarMemoria.Click += new System.EventHandler(this.btnBorrarMemoria_Click);
+            // 
             // Ejercicio_1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.OldLace;
-            this.ClientSize = new System.Drawing.Size(471, 284);
+            this.ClientSize = new System.Drawing.Size(533, 284);
+            this.Controls.Add(this.btnBorrarMemoria);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.btmsalir);
             this.Controls.Add(this.btnDeserializar);
@@ -209,6 +222,7 @@
         private System.Windows.Forms.Button btnDeserializar;
         private System.Windows.Forms.Button btmsalir;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Button btnBorrarMemoria;
     }
 }
 
